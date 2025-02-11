@@ -5,8 +5,6 @@ export default function Home() {
     return (
         <div className="grid grid-rows-[auto_1fr_20px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                <TitleBar />
-                <NavBar />
                 <p>
                     In engineering, ethical dilemmas often arise from the need to balance two competing objectives. Engineers are responsible for finding solutions that align with both goals without compromising our integrity or ethical principles. Navigating these challenges needs more than just technical knowledge, it requires diligence. Getting absorbed in the fine details of our work can sometimes obscure the broader implications of our decisions. By stepping back and adopting a &quot;bird&apos;s-eye view,&quot; we can better understand the full scope of the situation, enabling more thoughtful and informed decision-making.
                     The IEEE Code of Ethics serves as a vital framework in this process, providing a set of guiding principles to help engineers ensure their actions uphold moral standards. This code emphasizes the importance of prioritizing public welfare, respecting privacy, and acting with integrity in all circumstances.

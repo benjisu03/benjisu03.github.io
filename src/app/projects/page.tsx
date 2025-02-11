@@ -5,8 +5,6 @@ export default function Home() {
     return (
         <div className="grid grid-rows-[auto_1fr_20px] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
             <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                <TitleBar />
-                <NavBar />
                 <div>
                     <h1>Grayshift Raytracer</h1>
                     <p>This project involved building a raytracer in Rust, initially based on the Ray Tracing in One Weekend book series.

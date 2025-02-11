@@ -116,6 +116,7 @@ const createStarField = (scene: THREE.Scene) => {
 const SolarSystem: React.FC = () => {
     // Create a ref with proper typing for a div element
     const mountRef = useRef<HTMLDivElement | null>(null);
+
     const router = useRouter();
 
     useEffect(() => {
@@ -129,12 +130,18 @@ const SolarSystem: React.FC = () => {
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 
-        camera.position.set(0, 50, 50);
+        camera.position.set(0, 50, 60);
         camera.lookAt(0, 0, 0);
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        // Check if canvas already exists
+        let canvas = mountRef.current.querySelector('canvas');
+        if (!canvas) {
+            canvas = document.createElement('canvas'); // Create a new canvas if not found
+            mountRef.current.appendChild(canvas);
+        }
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
         renderer.setSize(width, height);
-        mountRef.current.appendChild(renderer.domElement);
 
         // Create a star field
         createStarField(scene);
@@ -162,12 +169,13 @@ const SolarSystem: React.FC = () => {
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
         let currentHovered: THREE.Mesh | null = null;
+        const canvasRect = renderer.domElement.getBoundingClientRect();
 
         const boundingBoxes = planets.map(p => p.boundingBox);
 
         const onMouseClick = (event: MouseEvent) => {
             mouse.x = (event.clientX / width) * 2 - 1;
-            mouse.y = -(event.clientY / height) * 2 + 1;
+            mouse.y = -((event.clientY - canvasRect.top) / height) * 2 + 1;
             raycaster.setFromCamera(mouse, camera);
 
             const intersects = raycaster.intersectObjects(boundingBoxes);
@@ -181,7 +189,7 @@ const SolarSystem: React.FC = () => {
 
         const onMouseMove = (event: MouseEvent) => {
             mouse.x = (event.clientX / width) * 2 - 1;
-            mouse.y = -(event.clientY / height) * 2 + 1;
+            mouse.y = -((event.clientY - canvasRect.top) / height) * 2 + 1;
             raycaster.setFromCamera(mouse, camera);
 
             const intersects = raycaster.intersectObjects(boundingBoxes);
@@ -241,6 +249,7 @@ const SolarSystem: React.FC = () => {
             window.removeEventListener("click", onMouseClick);
             window.removeEventListener("mousemove", onMouseMove);
 
+            scene.clear();
             renderer.dispose();
         };
     }, []);
