@@ -61,11 +61,11 @@ const createPlanetLabel = (text: string, planet: THREE.Object3D, planetSize: num
     planet.add(label);
 }
 
-const createPlanet = (config: PlanetConfig, scene: THREE.Scene) => {
+const createPlanet = (config: PlanetConfig, material: THREE.MeshStandardMaterial, scene: THREE.Scene) => {
     const { name, size, color, orbitRadius, orbitSpeed, link } = config;
 
     const geometry = new THREE.SphereGeometry(size, 32, 32);
-    const material = new THREE.MeshStandardMaterial({ color, emissive: 0x000000 });
+    // const material = new THREE.MeshStandardMaterial({ color, emissive: 0x000000 });
     const planet = new THREE.Mesh(geometry, material);
 
     const orbit = new THREE.Object3D();
@@ -160,9 +160,13 @@ const SolarSystem: React.FC = () => {
             { name: "Site Info", size: 3, color: 0xffa500, orbitRadius: 45, orbitSpeed: 0.0010, link: "info" }, // Jupiter
         ]
 
+        const textureLoader = new THREE.TextureLoader();
+        const diffuse = textureLoader.load("/textures/moon.png");
+        const planetMaterial = new THREE.MeshStandardMaterial({ map: diffuse, emissive: 0x000000 });
+
         const planets = planetConfigs.map(config => {
             createOrbitPath(config.orbitRadius, scene);
-            return createPlanet(config, scene);
+            return createPlanet(config, planetMaterial, scene);
         });
 
         // RAYCASTING SETUP //
@@ -247,7 +251,7 @@ const SolarSystem: React.FC = () => {
             }
 
             window.removeEventListener("click", onMouseClick);
-            window.removeEventListener("mousemove", onMouseMove);
+            window.removeEventListener("mousemove", onMouseMove);2
 
             scene.clear();
             renderer.dispose();
