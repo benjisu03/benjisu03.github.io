@@ -15,9 +15,10 @@ type TabbedPanelProps = {
 const TabbedPanel = ({ pages }: TabbedPanelProps) => {
 	const [activeTab, setActiveTab] = useState(0);
 
-	const baseStyle  = "px-3 py-3 w-full hover:text-accent hover:bg-gray-100";
+	const baseStyle  = "px-3 py-3 w-full hover:text-accent hover:bg-gray-300 font-semibold";
 	const firstStyle = "rounded-bl-2xl";
 	const lastStyle  = "rounded-tr-2xl";
+	const activeStyle  = "bg-gray-200";
 
 	return (
 		<Tile className={"relative flex-grow min-w-[600px] max-w-[1000px] w-full"}>
@@ -31,11 +32,12 @@ const TabbedPanel = ({ pages }: TabbedPanelProps) => {
 					{pages.map((page, index) => {
 						const isFirst = index === 0;
 						const isLast = index === pages.length - 1;
+						const isActive = index === activeTab;
 
 						return (<button
 							key={page.name}
 							onClick={() => setActiveTab(index)}
-							className={`${baseStyle} ${isFirst ? firstStyle : ""} ${isLast ? lastStyle : ""}`}
+							className={`${baseStyle} ${isFirst ? firstStyle : ""} ${isLast ? lastStyle : ""} ${isActive ? activeStyle : ""}`}
 						>
 							{page.name}
 						</button>);

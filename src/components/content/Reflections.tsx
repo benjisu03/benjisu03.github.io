@@ -16,7 +16,7 @@ const Reflections = ({ className = "" }: ReflectionsProps) => {
 			<p className = { "text-sm text-justify" }> { CumulativeReflection } </p>
 
 			<h1 className = { "text-xl font-semibold mt-[30px] mb-[10px]" }>Ethics Essay</h1>
-			<p className = { "text-sm text-justify" }> { EthicsEssay } </p>
+			<p className = { "text-sm text-justify whitespace-pre-line" }> { EthicsEssay } </p>
 		</div>
 	);
 }
