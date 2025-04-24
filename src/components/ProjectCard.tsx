@@ -1,8 +1,8 @@
 export enum CardCorner {
-	TopLeft = "tl",
-	TopRight = "tr",
-	BottomLeft = "bl",
-	BottomRight = "br"
+	TopLeft = "rounded-tl-2xl",
+	TopRight = "rounded-tr-2xl",
+	BottomLeft = "rounded-bl-2xl",
+	BottomRight = "rounded-br-2xl"
 }
 
 type ProjectCardProps = {
@@ -16,7 +16,7 @@ const ProjectCard = ({ corner, className = "" }: ProjectCardProps) => {
             ${className}
             p-[30px]
             bg-background
-            border border-border rounded-${corner}-2xl
+            border border-border ${corner}
             shadow-xl
         `}>
 		</div>
