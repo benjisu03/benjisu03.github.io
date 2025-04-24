@@ -7,7 +7,7 @@ import ContactEntry from "@/components/ContactEntry";
 const Sidebar: React.FC = () => {
     return <Tile className="
         sticky self-start
-        top-[60px] w-fit
+        top-[60px] w-fit min-w-max
         flex flex-col justify-center items-center
     ">
         <Image

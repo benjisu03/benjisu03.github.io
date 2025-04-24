@@ -7,15 +7,15 @@ import About from "@/components/content/About";
 import Reflections from "@/components/content/Reflections";
 
 const pages: ContentPage[] = [
-	{ name: 'About',        content: <About className = { "bg-red-500" } />       },
-	{ name: 'Projects',     content: <Projects className = { "bg-red-500" } />    },
-	{ name: 'Resume',       content: <Resume className = { "bg-red-500" } />      },
-	{ name: 'Reflections',  content: <Reflections className = { "bg-red-500" } /> }
+	{ name: 'About',        content: <About />       },
+	{ name: 'Projects',     content: <Projects />    },
+	{ name: 'Resume',       content: <Resume />      },
+	{ name: 'Reflections',  content: <Reflections /> }
 ];
 
 export default function Home() {
 	return (
-		<div className = { "flex flex-row gap-[25px]" }>
+		<div className = { "flex flex-row w-full gap-[25px] justify-center" }>
 			<Sidebar />
 			<TabbedPanel pages = { pages } />
 		</div>

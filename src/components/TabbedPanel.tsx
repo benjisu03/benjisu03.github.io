@@ -15,29 +15,36 @@ type TabbedPanelProps = {
 const TabbedPanel = ({ pages }: TabbedPanelProps) => {
 	const [activeTab, setActiveTab] = useState(0);
 
+	const baseStyle  = "px-3 py-3 w-full hover:text-accent hover:bg-gray-100";
+	const firstStyle = "rounded-bl-2xl";
+	const lastStyle  = "rounded-tr-2xl";
+
 	return (
-		<Tile className={"relative w-[1000px]"}>
+		<Tile className={"relative flex-grow min-w-[600px] max-w-[1000px] w-full"}>
 			<div className={
 				"absolute " +
 				"top-0 bottom-auto left-auto right-0 " +
-				"px-[5px] " +
+				"px-0 " +
 				"border-l border-b border-border rounded-tr-2xl rounded-bl-2xl"
 			}>
 				<nav className={"flex justify-around"}>
-					{pages.map((page, index) => (
-						<button
-							key = {page.name}
-							onClick = { () => setActiveTab(index) }
-							className = { "px-3 py-3 w-full hover:text-accent "}
+					{pages.map((page, index) => {
+						const isFirst = index === 0;
+						const isLast = index === pages.length - 1;
+
+						return (<button
+							key={page.name}
+							onClick={() => setActiveTab(index)}
+							className={`${baseStyle} ${isFirst ? firstStyle : ""} ${isLast ? lastStyle : ""}`}
 						>
 							{page.name}
-						</button>
-					))}
+						</button>);
+					})}
 				</nav>
 			</div>
 			<h2 className = {
-				"font-semibold text-3xl" +
-				" relative mb-[20px] " +
+				"font-semibold text-3xl " +
+				"relative mb-[20px] " +
 				"after:absolute after:left-0 after:bottom-[-10px] " +
 				"after:h-[6px] after:w-full " +
 				"after:bg-accent after:rounded-md"

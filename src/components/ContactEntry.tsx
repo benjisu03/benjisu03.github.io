@@ -7,7 +7,13 @@ type ContactEntryProps = {
 
 const ContactEntry = ({ className = "" }: ContactEntryProps) => {
 	return (
-		<FontAwesomeIcon icon = { faEnvelope } className = { "w-5 h-5 hover:text-accent" } />
+		<div className = { "flex items-center gap-[10px]" }>
+			<FontAwesomeIcon icon = { faEnvelope } className = { "w-5 h-5" } />
+			<div className = { "flex flex-col" }>
+				<p className = { "text-xs" }>Email</p>
+				<p className = { "text-sm" }>benj2003@iastate.edu</p>
+			</div>
+		</div>
 	);
 }
 
