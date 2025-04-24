@@ -15,10 +15,10 @@ type TabbedPanelProps = {
 const TabbedPanel = ({ pages }: TabbedPanelProps) => {
 	const [activeTab, setActiveTab] = useState(0);
 
-	const baseStyle  = "px-3 py-3 w-full hover:text-accent hover:bg-gray-300 font-semibold";
-	const firstStyle = "rounded-bl-2xl";
-	const lastStyle  = "rounded-tr-2xl";
-	const activeStyle  = "bg-gray-200";
+	const baseStyle    = "px-3 py-3 w-full hover:bg-gray-200 font-semibold";
+	const firstStyle   = "rounded-bl-2xl";
+	const lastStyle    = "rounded-tr-2xl";
+	const activeStyle  = "text-accent";
 
 	return (
 		<Tile className={"relative flex-grow min-w-[600px] max-w-[1000px] w-full"}>
