@@ -17,7 +17,7 @@ const ContactEntry = ({ className = "" }: ContactEntryProps) => {
 		setCopied(true);
 
 		// Reset after 2 seconds
-		setTimeout(() => setCopied(false), 2000);
+		setTimeout(() => setCopied(false), 1000);
 	};
 
 	return (
