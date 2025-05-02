@@ -6,13 +6,14 @@ import useMeasure from "react-use-measure";
 
 const icons = [
 	"/icons/blender.png",
+	"/icons/bevy.svg",
 	"/icons/rust.png",
 	"/icons/blender.png",
+	"/icons/bevy.svg",
 	"/icons/rust.png",
 	"/icons/blender.png",
+	"/icons/bevy.svg",
 	"/icons/rust.png",
-	"/icons/blender.png",
-	"/icons/rust.png"
 ];
 
 type IconProps = {
@@ -25,7 +26,7 @@ const Icon = ({image}: IconProps) => {
 
 	return (
 		<motion.div
-			className = {"relative overflow-hidden h-[100px] min-w-[100px] bg-slate-400 rounded-xl flex justify-center items-center"}
+			className = {"relative overflow-hidden h-[100px] min-w-[100px] rounded-xl flex justify-center items-center"}
 			onHoverStart = {() => setShowOverlay(true)}
 			onHoverEnd   = {() => setShowOverlay(false)}
 		>
@@ -61,7 +62,7 @@ type IconCarouselProps = {
 const IconCarousel = ({className = ""}: IconCarouselProps) => {
 	const [ref, { width }] = useMeasure();
 	const xTranslation = useMotionValue(0);
-	const gapPx = 10; // Tailwind gap-4 = 1rem = 16px
+	const gapPx = 100; // Tailwind gap-4 = 1rem = 16px
 
 	useEffect(() => {
 		if (width === 0) return;
@@ -70,7 +71,7 @@ const IconCarousel = ({className = ""}: IconCarouselProps) => {
 
 		const controls = animate(xTranslation, [0, -totalScroll], {
 			ease: "linear",
-			duration: 10,
+			duration: 30,
 			repeat: Infinity,
 		});
 
@@ -83,12 +84,12 @@ const IconCarousel = ({className = ""}: IconCarouselProps) => {
 				className="flex"
 				style={{ x: xTranslation }}
 			>
-				<div ref={ref} className="flex gap-[10px]">
+				<div ref={ref} className = "flex" style={{ gap: `${gapPx}px` }}>
 					{icons.map((image, i) => (
 						<Icon key={i} image={image} />
 					))}
 				</div>
-				<div className="flex gap-[10px] ml-[10px]"> {/* Add left margin to match the gap */}
+				<div className = "flex" style={{ gap: `${gapPx}px`, marginLeft: `${gapPx}px` }}> {/* Add left margin to match the gap */}
 					{icons.map((image, i) => (
 						<Icon key={`clone-${i}`} image={image} />
 					))}
