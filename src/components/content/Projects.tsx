@@ -22,6 +22,7 @@ export type Project = {
 	name: string;
 	description: string;
 	image: string;
+	repo: string | null;
 	corner: CardCorner;
 	toolCarouselProps: IconCarouselProps
 }
@@ -40,6 +41,7 @@ const projects: Project[] = [
 		description: "3D raytracer with GPU acceleration",
 		image: "/images/grayshift.png",
 		corner: CardCorner.TopLeft,
+		repo: "https://github.com/benjisu03/grayshift",
 		toolCarouselProps: {
 			icons: [
 				RustIcon,
@@ -60,6 +62,7 @@ const projects: Project[] = [
 		description: "A digital reimagining for a dying mall",
 		image: "/images/vwm-edit.png",
 		corner: CardCorner.TopRight,
+		repo: null,
 		toolCarouselProps: {
 			icons: [
 				BevyIcon,
@@ -78,6 +81,7 @@ const projects: Project[] = [
 		description: "Game engine designed to render hyperbolic worlds",
 		image: "/images/non-euclid2.png",
 		corner: CardCorner.BottomLeft,
+		repo: "https://github.com/sdmay25-37/NonEuclideanEngine",
 		toolCarouselProps: {
 			icons: [
 				CPPIcon,
@@ -97,6 +101,7 @@ const projects: Project[] = [
 		description: "Simple PCB for negotiating power over USB-C PD",
 		image: "/images/PCB-render.png",
 		corner: CardCorner.BottomRight,
+		repo: null,
 		toolCarouselProps: {
 			icons: [
 				BevyIcon,
