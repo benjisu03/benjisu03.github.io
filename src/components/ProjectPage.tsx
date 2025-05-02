@@ -1,4 +1,5 @@
 import {Project} from "@/components/content/Projects";
+import IconCarousel from "@/components/IconCarousel";
 
 
 type ProjectPageProps = {
@@ -8,7 +9,7 @@ type ProjectPageProps = {
 
 const ProjectPage = ({project, className = ""}: ProjectPageProps) => {
 	return (
-		<div>
+		<div className = {"overflow-hidden"}>
 			<h1 className="text-4xl font-bold mb-2">{project.name}</h1>
 			<p className = {
 				"text-lg " +
@@ -19,6 +20,7 @@ const ProjectPage = ({project, className = ""}: ProjectPageProps) => {
 			}>
 				{project.description}
 			</p>
+			<IconCarousel />
 		</div>
 	);
 }
