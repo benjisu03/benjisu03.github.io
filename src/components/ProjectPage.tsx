@@ -1,7 +1,7 @@
 import {Project} from "@/components/content/Projects";
 import IconCarousel from "@/components/IconCarousel";
 import Separator from "@/components/Separator";
-import {GithubLink} from "@/components/SocialIcons";
+import {GithubLink, GlobeLink} from "@/components/SocialIcons";
 
 
 type ProjectPageProps = {
@@ -14,9 +14,14 @@ const ProjectPage = ({project, className = ""}: ProjectPageProps) => {
 		<div className = {"overflow-hidden"}>
 			<div className = "flex items-center gap-4">
 				<h1 className="text-4xl font-bold mb-2">{project.name}</h1>
-				{!!project.repo && (
-					<GithubLink link = {project.repo} size = {24} className = "mb-[10px]" />
-				)}
+					<ul className = "flex gap-2">
+						{!!project.repo && (
+							<li><GithubLink link = {project.repo} size = {24} className = "mb-[10px]" /></li>
+						)}
+						{!!project.website && (
+							<li><GlobeLink link = {project.website} size = {24} className = "mb-[10px]" /></li>
+						)}
+					</ul>
 			</div>
 			<p className = {
 				"text-lg " +

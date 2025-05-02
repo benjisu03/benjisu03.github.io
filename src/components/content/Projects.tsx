@@ -23,6 +23,7 @@ export type Project = {
 	description: string;
 	image: string;
 	repo: string | null;
+	website: string | null;
 	corner: CardCorner;
 	toolCarouselProps: IconCarouselProps
 }
@@ -42,6 +43,7 @@ const projects: Project[] = [
 		image: "/images/grayshift.png",
 		corner: CardCorner.TopLeft,
 		repo: "https://github.com/benjisu03/grayshift",
+		website: null,
 		toolCarouselProps: {
 			icons: [
 				RustIcon,
@@ -63,6 +65,7 @@ const projects: Project[] = [
 		image: "/images/vwm-edit.png",
 		corner: CardCorner.TopRight,
 		repo: null,
+		website: null,
 		toolCarouselProps: {
 			icons: [
 				BevyIcon,
@@ -82,6 +85,7 @@ const projects: Project[] = [
 		image: "/images/non-euclid2.png",
 		corner: CardCorner.BottomLeft,
 		repo: "https://github.com/sdmay25-37/NonEuclideanEngine",
+		website: "https://sdmay25-37.sd.ece.iastate.edu/",
 		toolCarouselProps: {
 			icons: [
 				CPPIcon,
@@ -102,6 +106,7 @@ const projects: Project[] = [
 		image: "/images/PCB-render.png",
 		corner: CardCorner.BottomRight,
 		repo: null,
+		website: null,
 		toolCarouselProps: {
 			icons: [
 				BevyIcon,
