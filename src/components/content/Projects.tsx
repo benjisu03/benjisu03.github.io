@@ -3,8 +3,9 @@
 import ProjectCard, {CardCorner} from "@/components/ProjectCard";
 import { AnimatePresence, motion } from "framer-motion";
 import {useState} from "react";
-import Separator from "@/components/Separator";
 import ProjectPage from "@/components/ProjectPage";
+import {BevyIcon, BlenderIcon, RustIcon} from "@/components/Icon";
+import {IconCarouselProps} from "@/components/IconCarousel";
 
 export type Project = {
 	id: string;
@@ -12,8 +13,14 @@ export type Project = {
 	description: string;
 	image: string;
 	corner: CardCorner;
+	toolCarouselProps: IconCarouselProps
 }
 
+const carouselProps = {
+	gap: 50,
+	speed: 0.75,
+	hoverSpeed: 0.25
+}
 
 // TODO: auto set card corners
 const projects: Project[] = [
@@ -22,28 +29,63 @@ const projects: Project[] = [
 		name: "Grayshift",
 		description: "3D raytracer with GPU acceleration",
 		image: "/images/grayshift.png",
-		corner: CardCorner.TopLeft
+		corner: CardCorner.TopLeft,
+		toolCarouselProps: {
+			icons: [
+				BevyIcon,
+				BlenderIcon,
+				RustIcon
+			],
+			...carouselProps
+		}
 	},
 	{
 		id: "valley-west",
 		name: "Valley West - Renovation",
 		description: "A digital reimagining for a dying mall",
 		image: "/images/vwm-edit.png",
-		corner: CardCorner.TopRight
+		corner: CardCorner.TopRight,
+		toolCarouselProps: {
+			icons: [
+				BevyIcon,
+				BlenderIcon,
+				RustIcon,
+				BevyIcon,
+				BlenderIcon,
+				RustIcon
+			],
+			...carouselProps
+		}
 	},
 	{
 		id: "non-euclidean",
 		name: "Non-Euclidean Rendering Engine",
 		description: "Game engine designed to render hyperbolic worlds",
 		image: "/images/non-euclid2.png",
-		corner: CardCorner.BottomLeft
+		corner: CardCorner.BottomLeft,
+		toolCarouselProps: {
+			icons: [
+				BevyIcon,
+				BlenderIcon,
+				RustIcon
+			],
+			...carouselProps
+		}
 	},
 	{
 		id: "usb-c",
 		name: "USB-C Power Supply",
 		description: "Simple PCB for negotiating power over USB-C PD",
 		image: "/images/PCB-render.png",
-		corner: CardCorner.BottomRight
+		corner: CardCorner.BottomRight,
+		toolCarouselProps: {
+			icons: [
+				BevyIcon,
+				BlenderIcon,
+				RustIcon
+			],
+			...carouselProps
+		}
 	},
 ];
 

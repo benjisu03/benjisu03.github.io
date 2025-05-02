@@ -2,97 +2,77 @@ import React, {useEffect, useRef, useState} from "react";
 import Image from "next/image"
 import {animate, AnimatePresence, motion, useMotionValue} from "framer-motion";
 import useMeasure from "react-use-measure";
+import Icon, {IconProps} from "@/components/Icon";
 
 
-const icons = [
-	"/icons/blender.png",
-	"/icons/bevy.svg",
-	"/icons/rust.png",
-	"/icons/blender.png",
-	"/icons/bevy.svg",
-	"/icons/rust.png",
-	"/icons/blender.png",
-	"/icons/bevy.svg",
-	"/icons/rust.png",
-];
 
-type IconProps = {
-	image: string;
-
-}
-
-const Icon = ({image}: IconProps) => {
-	const [showOverlay, setShowOverlay] = useState<boolean>(false);
-
-	return (
-		<motion.div
-			className = {"relative overflow-hidden h-[100px] min-w-[100px] rounded-xl flex justify-center items-center"}
-			onHoverStart = {() => setShowOverlay(true)}
-			onHoverEnd   = {() => setShowOverlay(false)}
-		>
-			<AnimatePresence>
-				{showOverlay && (
-					<motion.div
-						className = {"absolute inset-0 z-10 flex justify-center items-center"}
-						initial = {{opacity: 0}}
-						animate = {{opacity: 1}}
-						exit    = {{opacity: 0}}
-					>
-						<div className = {"absolute bg-black pointer-events-none opacity-50 h-full w-full"}/>
-						<motion.h1
-							className = {"bg-foreground font-semibold text-xs z-10 px-2 py-1 rounded-full flex items-center ga-[0.5ch] hover:opacity-75"}
-							initial = {{y: 10}}
-							animate = {{y:  0}}
-							exit    = {{y: 10}}
-						>
-							<span>Explore Now</span>
-						</motion.h1>
-					</motion.div>
-				)}
-			</AnimatePresence>
-			<Image src = {image} alt = {image} fill style = {{objectFit: "contain"}} />
-		</motion.div>
-	);
-}
-
-type IconCarouselProps = {
+export type IconCarouselProps = {
+	icons: IconProps[];
+	gap: number;
+	speed: number;
+	hoverSpeed: number;
 	className?: string;
 }
 
-const IconCarousel = ({className = ""}: IconCarouselProps) => {
+const IconCarousel = ({icons, gap, speed, hoverSpeed, className = ""}: IconCarouselProps) => {
 	const [ref, { width }] = useMeasure();
 	const xTranslation = useMotionValue(0);
-	const gapPx = 100; // Tailwind gap-4 = 1rem = 16px
+
+	const default_duration = (icons.length * 2) / speed;
+	const hover_duration = (icons.length * 2) / hoverSpeed;
+
+	const [duration, setDuration] = useState(default_duration);
+
+	const [mustFinish, setMustFinish] = useState(false);
+	const [rerender, setRerender] = useState(false);
 
 	useEffect(() => {
-		if (width === 0) return;
+		let controls;
+		const totalScroll = width + gap;
 
-		const totalScroll = width + gapPx;
+		if(mustFinish) {
+			controls = animate(xTranslation, [xTranslation.get(), -totalScroll], {
+				ease: "linear",
+				duration: duration * (1 - xTranslation.get() / (-totalScroll)),
+				onComplete: () => {
+					setMustFinish(false);
+					setRerender(!rerender);
+				}
+			})
+		} else {
+			controls = animate(xTranslation, [0, -totalScroll], {
+				ease: "linear",
+				duration: duration,
+				repeat: Infinity,
+				repeatType: "loop",
+				repeatDelay: 0
+			});
+		}
 
-		const controls = animate(xTranslation, [0, -totalScroll], {
-			ease: "linear",
-			duration: 30,
-			repeat: Infinity,
-		});
-
-		return () => controls.stop();
-	}, [width]);
+		return () => controls?.stop();
+	}, [width, duration, rerender]);
 
 	return (
-		<div className={`overflow-hidden w-full ${className}`}>
+		<div className={`relative overflow-hidden w-full ${className}`}>
+			<div className="pointer-events-none absolute left-0 top-0 h-full w-24 z-10 bg-gradient-to-r from-foreground to-transparent" />
+			<div className="pointer-events-none absolute right-0 top-0 h-full w-24 z-10 bg-gradient-to-l from-foreground to-transparent"/>
 			<motion.div
 				className="flex"
 				style={{ x: xTranslation }}
+				onHoverStart = {() => {
+					setMustFinish(true);
+					setDuration(hover_duration)
+				}}
+				onHoverEnd = {() => {
+					setMustFinish(true);
+					setDuration(default_duration)
+				}}
 			>
-				<div ref={ref} className = "flex" style={{ gap: `${gapPx}px` }}>
-					{icons.map((image, i) => (
-						<Icon key={i} image={image} />
-					))}
+				<div ref={ref} className = "flex" style={{ gap: `${gap}px` }}>
+					{icons.map((props, i) => <Icon key = {i} {...props} />)}
 				</div>
-				<div className = "flex" style={{ gap: `${gapPx}px`, marginLeft: `${gapPx}px` }}> {/* Add left margin to match the gap */}
-					{icons.map((image, i) => (
-						<Icon key={`clone-${i}`} image={image} />
-					))}
+				<div className = "flex" style={{ gap: `${gap}px`, marginLeft: `${gap}px` }}> {/* Add left margin to match the gap */}
+					{icons.map((props, i) => <Icon key={`clone-${i}`} {...props} />)}
 				</div>
 			</motion.div>
 		</div>

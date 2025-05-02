@@ -1,5 +1,6 @@
 import {Project} from "@/components/content/Projects";
 import IconCarousel from "@/components/IconCarousel";
+import Separator from "@/components/Separator";
 
 
 type ProjectPageProps = {
@@ -20,7 +21,10 @@ const ProjectPage = ({project, className = ""}: ProjectPageProps) => {
 			}>
 				{project.description}
 			</p>
-			<IconCarousel />
+			<h2 className = "text-lg font-semibold">Tools</h2>
+			<Separator />
+			<IconCarousel {...project.toolCarouselProps} />
+			<Separator />
 		</div>
 	);
 }
