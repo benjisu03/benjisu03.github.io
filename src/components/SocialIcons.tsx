@@ -18,7 +18,7 @@ export const GithubLink = ({link, size = 32, className = ""}: IconLinkProps) => 
 export const GlobeLink = ({link, size = 32, className = ""}: IconLinkProps) => {
     return (
         <a className = {`block hover:text-accent ${className}`} href = {link} target="_blank" rel="noopener noreferrer" title="Website">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" width = {size} height = {size} stroke="#000" fill="none">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 420" width = {size} height = {size} stroke="currentColor" fill="none">
                 <path strokeWidth="26" d="M209,15a195,195 0 1,0 2,0z"/>
                 <path strokeWidth="18" d="m210,15v390m195-195H15M59,90a260,260 0 0,0 302,0 m0,240 a260,260 0 0,0-302,0M195,20a250,250 0 0,0 0,382 m30,0 a250,250 0 0,0 0-382"/>
             </svg>
@@ -26,22 +26,12 @@ export const GlobeLink = ({link, size = 32, className = ""}: IconLinkProps) => {
     );
 }
 
-
-const SocialIcons = () => {
+export const LinkedInLink = ({link, size = 32, className = ""}: IconLinkProps) => {
     return (
-        <ul className="ml-1 flex items-center">
-            <li className="mr-5 shrink-0 text-xs">
-                <GithubLink link = "https://github.com/benjisu03" />
-            </li>
-            <li className="mr-5 shrink-0 text-xs">
-                <a className="block hover:text-accent" href="https://www.linkedin.com/in/benjamin-johnson-ia/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                </a>
-            </li>
-        </ul>
+        <a className = {`block hover:text-accent ${className}`} href = {link} target="_blank" rel="noopener noreferrer" title="LinkedIn">
+            <svg xmlns = "http://www.w3.org/2000/svg" viewBox = "0 0 24 24" width = {size} height = {size} fill = "currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+        </a>
     );
-};
-
-export default SocialIcons;
+}
