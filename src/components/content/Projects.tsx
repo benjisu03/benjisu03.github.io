@@ -1,6 +1,12 @@
-import ProjectCard, {CardCorner} from "@/components/ProjectCard";
+"use client";
 
-type Project = {
+import ProjectCard, {CardCorner} from "@/components/ProjectCard";
+import { AnimatePresence, motion } from "framer-motion";
+import {useState} from "react";
+import Separator from "@/components/Separator";
+import ProjectPage from "@/components/ProjectPage";
+
+export type Project = {
 	id: string;
 	name: string;
 	description: string;
@@ -29,7 +35,7 @@ const projects: Project[] = [
 		id: "non-euclidean",
 		name: "Non-Euclidean Rendering Engine",
 		description: "Game engine designed to render hyperbolic worlds",
-		image: "/images/non-euclid-edit.png",
+		image: "/images/non-euclid2.png",
 		corner: CardCorner.BottomLeft
 	},
 	{
@@ -41,38 +47,62 @@ const projects: Project[] = [
 	},
 ];
 
-const grayshiftBlurb = "";
-const valleyWestBlurb = "";
-const nonEuclidBlurb = "";
-const usbCBlurb = "";
-
-
 type ProjectsProps = {
 	className?: string
 }
 
-{/*<ProjectCard corner = {CardCorner.TopLeft} name = "Grayshift" blurb = {grayshiftBlurb} className = {"bg-[url('/images/grayshift.png')] bg-cover bg-center h-64"} />*/}
-{/*<ProjectCard corner = {CardCorner.TopRight} name = "Valley West - Renovation" blurb = {valleyWestBlurb} className = {"bg-[url('/images/vwm-edit.png')] bg-cover bg-center h-64"} />*/}
-{/*<ProjectCard corner = {CardCorner.BottomLeft} name = "Non-Euclidean Rendering Engine" blurb = {nonEuclidBlurb} className = {"bg-[url('/images/non-euclid-edit.png')] bg-cover bg-center h-64"} />*/}
-{/*<ProjectCard corner = {CardCorner.BottomRight} name = "USB-C Power Supply" blurb = {usbCBlurb} className = {"bg-[url('/images/PCB-render.png')] bg-cover bg-center h-64"} />*/}
-
 const Projects = ({ className = "" }: ProjectsProps) => {
+	const [activeProject, setActiveProject] = useState<Project | null>();
 
 	return (
-		<div className = {`${className} grid grid-cols-2`}>
-			{projects.map((project: Project) => {
-				return (
-					<ProjectCard
-						key = {project.id}
-						name=  {project.name}
-						description = {project.description}
-						image = {project.image}
-						corner = {project.corner}
-						className = {`bg-cover bg-center h-64`}
-					/>
-				);
-			})}
-		</div>
+		<>
+			<div className = {`${className} grid grid-cols-2`}>
+				{projects.map((project: Project) => {
+					return (
+						<div key = {project.id} className = {"cursor-pointer"} onClick = {() => setActiveProject(project)}>
+							<ProjectCard
+								key = {project.id}
+								name = {project.name}
+								description = {project.description}
+								image = {project.image}
+								corner = {project.corner}
+								className = {`bg-cover bg-center h-64`}
+							/>
+						</div>
+					);
+				})}
+			</div>
+
+			<AnimatePresence>
+				{activeProject && (
+					<motion.div
+						className="fixed inset-0 bg-black/70 z-50 p-8 overflow-auto flex items-center justify-center"
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						onClick={(e) => {
+							if (e.target === e.currentTarget) {
+								setActiveProject(null);
+							}
+						}}
+					>
+						<div
+							className="rounded-2xl shadow-lg bg-cover bg-center w-full max-w-4xl h-[80vh] flex flex-col p-8 bg-foreground relative"
+						>
+							<button
+								className="absolute top-4 right-4 text-white bg-black/60 px-3 py-1 rounded"
+								onClick={() => setActiveProject(null) }
+							>
+								Close
+							</button>
+
+							<ProjectPage project = {activeProject} />
+						</div>
+					</motion.div>
+				)}
+			</AnimatePresence>
+				
+		</>
 	);
 }
 
