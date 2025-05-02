@@ -4,7 +4,17 @@ import ProjectCard, {CardCorner} from "@/components/ProjectCard";
 import { AnimatePresence, motion } from "framer-motion";
 import {useState} from "react";
 import ProjectPage from "@/components/ProjectPage";
-import {BevyIcon, BlenderIcon, RustIcon} from "@/components/Icon";
+import {
+	BevyIcon,
+	BlenderIcon,
+	Catch2Icon,
+	CMakeIcon,
+	CPPIcon,
+	GLFWIcon,
+	GLMIcon, ImGuiIcon,
+	OpenGLIcon, RTIOWIcon,
+	RustIcon, TokioIcon, WGPUIcon
+} from "@/components/Icon";
 import {IconCarouselProps} from "@/components/IconCarousel";
 
 export type Project = {
@@ -32,9 +42,14 @@ const projects: Project[] = [
 		corner: CardCorner.TopLeft,
 		toolCarouselProps: {
 			icons: [
-				BevyIcon,
-				BlenderIcon,
-				RustIcon
+				RustIcon,
+				WGPUIcon,
+				RTIOWIcon,
+				TokioIcon,
+				RustIcon,
+				WGPUIcon,
+				RTIOWIcon,
+				TokioIcon
 			],
 			...carouselProps
 		}
@@ -65,9 +80,13 @@ const projects: Project[] = [
 		corner: CardCorner.BottomLeft,
 		toolCarouselProps: {
 			icons: [
-				BevyIcon,
-				BlenderIcon,
-				RustIcon
+				CPPIcon,
+				OpenGLIcon,
+				CMakeIcon,
+				GLFWIcon,
+				GLMIcon,
+				Catch2Icon,
+				ImGuiIcon
 			],
 			...carouselProps
 		}

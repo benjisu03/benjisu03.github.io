@@ -6,9 +6,11 @@ export type IconProps = {
 	image: string;
 	label: string;
 	link: string;
+	imageSize?: number;
+	textClassName?: string;
 }
 
-const Icon = ({image, label, link}: IconProps) => {
+const Icon = ({image, label, link, imageSize = 64, textClassName = ""}: IconProps) => {
 	const [showOverlay, setShowOverlay] = useState<boolean>(false);
 
 	return (
@@ -44,12 +46,12 @@ const Icon = ({image, label, link}: IconProps) => {
 			<Image
 				src = {image}
 				alt = {image}
-				width = {64}
-				height = {64}
+				width = {imageSize}
+				height = {imageSize}
 				style = {{objectFit: "contain"}}
 			/>
 			</div>
-			<h1 className = "text-xs font-semibold">{label}</h1>
+			<h1 className = {`text-xs text-center font-semibold ${textClassName}`}>{label}</h1>
 		</motion.div>
 	);
 }
@@ -70,4 +72,66 @@ export const RustIcon: IconProps = {
 	image: "/icons/rust.png",
 	label: "Rust",
 	link : "https://www.rust-lang.org/"
+}
+
+export const OpenGLIcon: IconProps = {
+	image: "/icons/opengl.png",
+	label: "OpenGL",
+	link : "https://www.opengl.org/"
+}
+
+export const CMakeIcon: IconProps = {
+	image: "/icons/cmake.png",
+	label: "CMake",
+	link : "https://cmake.org/"
+}
+
+export const CPPIcon: IconProps = {
+	image: "/icons/cpp.png",
+	label: "C++",
+	link : "https://en.wikipedia.org/wiki/C%2B%2B"
+}
+
+export const GLFWIcon: IconProps = {
+	image: "/icons/glfw.png",
+	label: "GLFW",
+	link : "https://www.glfw.org/"
+}
+
+export const GLMIcon: IconProps = {
+	image: "/icons/glm.png",
+	label: "GLM",
+	link : "https://github.com/g-truc/glm"
+}
+
+export const Catch2Icon: IconProps = {
+	image: "/icons/catch2.png",
+	label: "Catch2",
+	link : "https://github.com/catchorg/Catch2"
+}
+
+export const ImGuiIcon: IconProps = {
+	image: "/icons/imgui.png",
+	label: "Dear ImGui",
+	link : "https://github.com/ocornut/imgui"
+}
+
+export const WGPUIcon: IconProps = {
+	image: "/icons/wgpu.png",
+	label: "WGPU",
+	link : "https://wgpu.rs/"
+}
+
+export const TokioIcon: IconProps = {
+	image: "/icons/tokio.png",
+	label: "Tokio",
+	link : "https://tokio.rs/"
+}
+
+export const RTIOWIcon: IconProps = {
+	image: "/icons/rtiow.png",
+	label: "Raytracing in One Weekend",
+	link : "https://raytracing.github.io/",
+	imageSize: 48,
+	textClassName: "text-[10px]"
 }
