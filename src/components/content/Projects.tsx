@@ -11,7 +11,7 @@ import {
 	CMakeIcon,
 	CPPIcon,
 	GLFWIcon,
-	GLMIcon, ImGuiIcon,
+	GLMIcon, ImGuiIcon, KiCadIcon,
 	OpenGLIcon, RTIOWIcon,
 	RustIcon, TokioIcon, WGPUIcon
 } from "@/components/Icon";
@@ -109,9 +109,12 @@ const projects: Project[] = [
 		website: null,
 		toolCarouselProps: {
 			icons: [
-				BevyIcon,
-				BlenderIcon,
-				RustIcon
+				KiCadIcon,
+				KiCadIcon,
+				KiCadIcon,
+				KiCadIcon,
+				KiCadIcon,
+				KiCadIcon
 			],
 			...carouselProps
 		}

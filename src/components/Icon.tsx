@@ -135,3 +135,10 @@ export const RTIOWIcon: IconProps = {
 	imageSize: 48,
 	textClassName: "text-[10px]"
 }
+
+export const KiCadIcon: IconProps = {
+	image: "/icons/kicad.png",
+	label: "KiCad",
+	link : "https://www.kicad.org//",
+	imageSize: 76
+}
