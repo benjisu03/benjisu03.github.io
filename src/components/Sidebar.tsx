@@ -9,6 +9,7 @@ const Sidebar: React.FC = () => {
         sticky self-start
         top-[60px] w-fit min-w-max
         flex flex-col justify-center items-center
+        border-dashed
     ">
         <Image
             src="/images/profile.png"

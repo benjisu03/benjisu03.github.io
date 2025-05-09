@@ -29,13 +29,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 	return (
 		<html lang="en">
 			<body
-				className = {
-					`antialiased 
-					${InterFont.className} 
+				className = {`
+					antialiased 
+					${InterFont.className} text-white
 					w-screen min-h-screen 
 					flex items-start justify-center
-					p-[60px] bg-background`
-				}
+					p-[60px] bg-background
+				`}
+				style={{ backgroundImage: "url('/background.gif')" }}
 			>
 				{ children }
 			</body>

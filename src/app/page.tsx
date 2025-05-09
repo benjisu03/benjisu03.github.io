@@ -15,10 +15,16 @@ const pages: ContentPage[] = [
 
 export default function Home() {
 	return (
-		<div className = { "flex flex-row w-full gap-[25px] justify-center" }>
-			<Sidebar />
-			<TabbedPanel pages = { pages } />
-		</div>
+		<div>
+			{/*<div className = { "flex flex-row w-full gap-[25px] justify-center" }>*/}
+			{/*	<Sidebar />*/}
+			{/*	<TabbedPanel pages = { pages } />*/}
+			{/*</div>*/}
 
+			{/*<About />*/}
+			{/*<Projects />*/}
+			{/*<Resume />*/}
+			{/*<Reflections />*/}
+		</div>
 	);
 }
