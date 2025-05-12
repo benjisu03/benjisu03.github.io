@@ -5,8 +5,13 @@ type ResumeProps = {
 }
 
 const Resume = ({ className = "" }: ResumeProps) => {
-	return <div className={`${className}`}>
-		<ResumeSection />
+	return <div className = {`${className}`}>
+		<iframe
+			src="/Resume.pdf"
+			width="100%"
+			height="1200px"
+			style={{ border: "none" }}
+		/>
 	</div>
 }
 
