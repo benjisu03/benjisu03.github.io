@@ -1,10 +1,9 @@
 type SeparatorProps = {
-    color? : string;
     className?: string
 }
 
-const Separator = ({ color = "border", className = "" }: SeparatorProps) => {
-    return <div className={`${className} w-full h-[1px] bg-${color}`}></div>
+const Separator = ({className = "" }: SeparatorProps) => {
+    return <div className={`w-full h-[1px] bg-border ${className}`}></div>
 }
 
 export default Separator;
