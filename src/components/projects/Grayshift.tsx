@@ -2,9 +2,15 @@ import {Project} from "@/components/content/Projects";
 import {CardCorner} from "@/components/ProjectCard";
 import {RTIOWIcon, RustIcon, TokioIcon, WGPUIcon} from "@/components/Icon";
 
-const GrayShiftContent = ({}) => {
+const GrayshiftContent = ({}) => {
 	return (
-		<p>Description</p>
+		<p>
+			<b>Grayshift</b> is a raytracer built in Rust that I originally started as a school project for a
+			computer graphics course. The implementation was created from the "Raytracing in One Weekend" series.
+			This set of three online books provides the structure of a basic raytracer. Most of my work on the
+			project has been to optimize the performance with parallelism and GPU acceleration. I am also working
+			on a shader system that allows users to construct materials using graphical nodes.
+		</p>
 	);
 }
 
@@ -31,5 +37,5 @@ export const Grayshift: Project = {
 		speed: 0.75,
 		hoverSpeed: 0.25
 	},
-	content: <GrayShiftContent />
+	content: <GrayshiftContent />
 }
