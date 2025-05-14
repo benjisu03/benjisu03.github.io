@@ -1,19 +1,30 @@
+import Image from "next/image";
+
 type AboutProps = {
 	className?: string
 }
 
-const text = "It's about the future, isn't it? Of course, from a group of Libyan Nationalists. They wanted me to build them a bomb, so I took their plutonium and in turn gave them a shiny bomb case full of used pinball machine parts. What? What you got under here? Please note that Einstein's clock is in complete synchronization with my control watch.\n" +
-	"\n" +
-	"This is more serious than I thought. Apparently your mother is amorously infatuated with you instead of your father. Listen, woh. Hello, uh excuse me. Sorry about your barn. I hope you don't mind but George asked if he could take me home. Our first television set, Dad just picked it up today. Do you have a television? C'mon, open up, let me out of here, Yo.\n" +
-	"\n" +
-	"Give me a hand, Lorenzo. Ow, dammit, man, I sliced my hand. A block passed Maple, that's John F. Kennedy Drive. What did she say? It's your mom, she's tracked you down. Quick, let's cover the time machine. No, no, George, look, it's just an act, right? Okay, so 9:00 you're strolling through the parking lot, you see us struggling in the car, you walk up, you open the door and you say, your line, George. Alright, punk, now-\n" +
-	"\n"
-
 const About = ({ className = "" }: AboutProps) => {
-	return <div className = {`${className}`}>
-		{/*<p>{text}</p>*/}
+	return <div className = "flex gap-[50px]">
+		<div className = "flex flex-col gap-[20px]">
+			<p>
+				<b className = "text-accent font-semibold">Hello!</b> I'm Benjamin Johnson, a senior in Computer Engineering
+				at Iowa State University. I'll be graduating in May 2025, and then pursue a career in software engineering.
+				Coding has been a long time hobby for me, so I am constantly working on personal projects outside of school.
+				With my free time I also love to workout, and particularly enjoy long distance running.
+			</p>
 
-		{/*<h3 className = "font-bold text-xl">Movie Quotes</h3>*/}
+			<p className = "mt-[10px]">After I graduate with my Bachelor's, I'm planning on working as a software engineer
+			for a few years to get some experience in the industry. Then I hope to come back and get by Master's. Eventually,
+			I would like to create a startup and develop my own products. </p>
+		</div>
+
+		<Image
+			src="/images/portrait.jpg"
+			alt = ""
+			width = {200} height = {600}
+			className = "rounded-sm"
+		/>
 	</div>
 }
 

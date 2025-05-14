@@ -32,10 +32,11 @@ const ProjectPage = ({project, className = ""}: ProjectPageProps) => {
 			}>
 				{project.description}
 			</p>
-			<h2 className = "text-lg font-semibold">Tools</h2>
-			<Separator />
+			<h2 className = "text-2xl font-bold">Description</h2>
+			{project.content}
+			<Separator className = "mt-[20px]" />
+			<h2 className = "text-2xl font-bold mt-[20px]">Tools</h2>
 			<IconCarousel {...project.toolCarouselProps} />
-			<Separator />
 		</div>
 	);
 }

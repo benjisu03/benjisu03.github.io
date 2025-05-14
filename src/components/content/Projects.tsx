@@ -2,20 +2,13 @@
 
 import ProjectCard, {CardCorner} from "@/components/ProjectCard";
 import { AnimatePresence, motion } from "framer-motion";
-import {useState} from "react";
+import {ReactNode, useState} from "react";
 import ProjectPage from "@/components/ProjectPage";
-import {
-	BevyIcon,
-	BlenderIcon,
-	Catch2Icon,
-	CMakeIcon,
-	CPPIcon,
-	GLFWIcon,
-	GLMIcon, ImGuiIcon, KiCadIcon,
-	OpenGLIcon, RTIOWIcon,
-	RustIcon, TokioIcon, WGPUIcon
-} from "@/components/Icon";
 import {IconCarouselProps} from "@/components/IconCarousel";
+import {Grayshift} from "@/components/projects/Grayshift";
+import {ValleyWest} from "@/components/projects/ValleyWest";
+import {NonEuclidean} from "@/components/projects/NonEuclidean";
+import {USBC} from "@/components/projects/USBC";
 
 export type Project = {
 	id: string;
@@ -25,101 +18,11 @@ export type Project = {
 	repo: string | null;
 	website: string | null;
 	corner: CardCorner;
-	toolCarouselProps: IconCarouselProps
+	content: ReactNode;
+	toolCarouselProps: IconCarouselProps;
 }
 
-const carouselProps = {
-	gap: 50,
-	speed: 0.75,
-	hoverSpeed: 0.25
-}
-
-// TODO: auto set card corners
-const projects: Project[] = [
-	{
-		id: "grayshift",
-		name: "Grayshift",
-		description: "3D raytracer with GPU acceleration",
-		image: "/images/grayshift.png",
-		corner: CardCorner.TopLeft,
-		repo: "https://github.com/benjisu03/grayshift",
-		website: null,
-		toolCarouselProps: {
-			icons: [
-				RustIcon,
-				WGPUIcon,
-				RTIOWIcon,
-				TokioIcon,
-				RustIcon,
-				WGPUIcon,
-				RTIOWIcon,
-				TokioIcon
-			],
-			...carouselProps
-		}
-	},
-	{
-		id: "valley-west",
-		name: "Valley West - Renovation",
-		description: "A digital reimagining for a dying mall",
-		image: "/images/vwm-edit.png",
-		corner: CardCorner.TopRight,
-		repo: null,
-		website: null,
-		toolCarouselProps: {
-			icons: [
-				BevyIcon,
-				BlenderIcon,
-				RustIcon,
-				BevyIcon,
-				BlenderIcon,
-				RustIcon
-			],
-			...carouselProps
-		}
-	},
-	{
-		id: "non-euclidean",
-		name: "Non-Euclidean Rendering Engine",
-		description: "Game engine designed to render hyperbolic worlds",
-		image: "/images/non-euclid2.png",
-		corner: CardCorner.BottomLeft,
-		repo: "https://github.com/sdmay25-37/NonEuclideanEngine",
-		website: "https://sdmay25-37.sd.ece.iastate.edu/",
-		toolCarouselProps: {
-			icons: [
-				CPPIcon,
-				OpenGLIcon,
-				CMakeIcon,
-				GLFWIcon,
-				GLMIcon,
-				Catch2Icon,
-				ImGuiIcon
-			],
-			...carouselProps
-		}
-	},
-	{
-		id: "usb-c",
-		name: "USB-C Power Supply",
-		description: "Simple PCB for negotiating power over USB-C PD",
-		image: "/images/PCB-render.png",
-		corner: CardCorner.BottomRight,
-		repo: null,
-		website: null,
-		toolCarouselProps: {
-			icons: [
-				KiCadIcon,
-				KiCadIcon,
-				KiCadIcon,
-				KiCadIcon,
-				KiCadIcon,
-				KiCadIcon
-			],
-			...carouselProps
-		}
-	},
-];
+const projects: Project[] = [Grayshift, ValleyWest, NonEuclidean, USBC];
 
 type ProjectsProps = {
 	className?: string
@@ -139,6 +42,7 @@ const Projects = ({ className = "" }: ProjectsProps) => {
 								name = {project.name}
 								description = {project.description}
 								image = {project.image}
+								// TODO: auto set card corners
 								corner = {project.corner}
 								className = {`bg-cover bg-center h-64`}
 							/>
