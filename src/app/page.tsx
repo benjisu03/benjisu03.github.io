@@ -12,15 +12,15 @@ export default function Home() {
 		    />
 		    <div className="flex flex-col gap-4">
 			    <div>
-				    <h2 className="font-bold text-3xl">nerdium</h2>
+				    <h2 className="font-bold text-3xl">benjamin johnson</h2>
 				    <p className="italic">computer engineer, game developer, dead mall enthusiast</p>
 			    </div>
 			    <dl className="grid grid-cols-[auto_1fr] gap-x-4">
 			        <dt className="font-semibold">email</dt>
-			        <dd><a className="underline" href="mailto:contact@nerdium.dev">{"contact@nerdium.dev"}</a></dd>
+			        <dd><a className="underline" href="mailto:contact@benjamin-johnson.dev">{"contact@benjamin-johnson.dev"}</a></dd>
 
 			        <dt className="font-semibold">github</dt>
-			        <dd><a className="underline" href="https://github.com/nerdium">{"nerdium"}</a></dd>
+			        <dd><a className="underline" href="https://github.com/benjisu03">{"benjisu03"}</a></dd>
 			    </dl>
 		    </div>
 	    </div>
